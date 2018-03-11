@@ -1,0 +1,25 @@
+
+server:
+  port: 8764
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+spring:
+  application:
+    name: demo
+security:
+  oauth2:
+    resource:
+      id: demo
+      user-info-uri: http://localhost:8763/auth/me
+    client:
+      client-id: web
+      client-secret: web_secret
+  ignored: /v2/api-docs, /configuration/ui, /swagger-resources/**, /configuration/security, /swagger-ui.html, /webjars/**
+logging:
+  level:
+    org.springframework.security: DEBUG
